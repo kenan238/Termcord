@@ -169,22 +169,31 @@ class Client {
      * 
      * @summary Join voice channel
      * @param {*} channel 
+     * @param {*} guild
      */
     async connectToChannel(channel, guild) {
-        const connection = joinVoiceChannel({
+        this.connection = joinVoiceChannel({
             channelId: channel.id,
             guildId: channel.guild.id,
             adapterCreator: guild.djs.voiceAdapterCreator,
         });
     
         try {
-            await entersState(connection, VoiceConnectionStatus.Ready, 30e3);
-            return connection;
+            await entersState(this.connection, VoiceConnectionStatus.Ready, 30e3);
+            return this.connection;
         } catch (error) {
-            connection.destroy();
+            this.connection.destroy();
             throw error;
         }
-    }    
+    }  
+    
+    /**
+     * 
+     * @summary disconnect from channel
+     */
+    async disconnectFromChannel() {
+        this.connection.disconnect();
+    }
 }
 
 module.exports = { Client };

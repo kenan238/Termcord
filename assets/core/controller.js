@@ -235,6 +235,13 @@ class Controller {
                 this.client.connectToChannel(this.currentChannel, this.currentServer);
                 return "Joining.";
             }),
+            "leave_vc": new Command("leave_vc", () => {
+                if(this.currentChannel.type !== "GUILD_VOICE")
+                    return "{bold}Current channel{/bold} is not {magenta-fg}VC{/magenta-fg}";
+                
+                this.client.disconnectFromChannel();
+                return "Leaving.";
+            }),
             "refresh": new Command("refresh", () => "<REFRESH_TERMCORD_UI>"),
             "mute": new Command("mute", () => {
                 // TODO: implement
