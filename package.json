@@ -1,0 +1,22 @@
+{
+  "name": "termcord",
+  "version": "1.0.0",
+  "description": "Discord but terminal.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node --no-deprecation main.js"
+  },
+  "keywords": [
+    "Discord",
+    "Terminal",
+    "kenan238",
+    "CLI"
+  ],
+  "author": "kenan238",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.7.5",
+    "discord.js": "^13.3.1",
+    "reblessed": "^0.1.82",
+  }
+}
