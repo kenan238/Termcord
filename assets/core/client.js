@@ -194,6 +194,25 @@ class Client {
     async disconnectFromChannel() {
         this.connection.disconnect();
     }
+
+    /**
+     *
+     * @summary gets a role by id
+     * @param {*} id
+     */
+    getRoleById(guild, id) {
+        return guild.djs.roles.cache.find(r => r.id === id);
+    }
+
+    /**
+     * 
+     * @summary get all the roles from member
+     * @param {*} guild
+     * @param {*} member
+     */
+    getAllRolesFromMember(member) {
+        
+    }
 }
 
 module.exports = { Client };
