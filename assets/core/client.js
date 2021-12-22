@@ -201,7 +201,7 @@ class Client {
      * @param {*} id
      */
     getRoleById(guild, id) {
-        return guild.djs.roles.cache.find(r => r.id === id);
+        return [...guild.djs.roles.cache.values()].find(r => r.id == id);
     }
 
     /**
@@ -211,7 +211,7 @@ class Client {
      * @param {*} member
      */
     getAllRolesFromMember(member) {
-        
+        return member.roles;
     }
 }
 

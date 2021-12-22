@@ -234,23 +234,39 @@ class Controller {
                     return "{bold}Current channel{/bold} is not {magenta-fg}VC{/magenta-fg}";
                 this.client.connectToChannel(this.currentChannel, this.currentServer);
                 return "Joining.";
-            }),
+            }, [ArgType.none]),
             "leave_vc": new Command("leave_vc", () => {
                 if(this.currentChannel.type !== "GUILD_VOICE")
                     return "{bold}Current channel{/bold} is not {magenta-fg}VC{/magenta-fg}";
                 
                 this.client.disconnectFromChannel();
                 return "Leaving.";
-            }),
+            }, [ArgType.none]),
             "refresh": new Command("refresh", () => "<REFRESH_TERMCORD_UI>"),
             "mute": new Command("mute", () => {
                 // TODO: implement
                 return "Not implemented yet";
-            }),
+            }, [ArgType.none]),
             "deafen": new Command("deafen", () => {
                 // TODO: implement
                 return "Not implemented yet";
-            }),
+            }, [ArgType.none]),
+            "get_roles": new Command("get_roles", (id) => {
+                var member = this.currentServer.djs.members.cache.find(m => m.id === id);
+                var roles = member._roles;
+                var rolesStr = [];
+
+                for(let i = 0; i < roles.length; i++) {
+                    var role_id = roles[i];
+                    var role = this.client.getRoleById(this.currentServer, role_id);
+                    var name = role.name;
+                    var id = role.id;
+                    rolesStr.push(`${name}:${id}`);
+                }
+
+                var entirety = rolesStr.join(" / ");
+                return entirety;
+            }, [ArgType.number]),
         };
 
         this.client.dClient.on("message", msg => {
