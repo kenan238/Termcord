@@ -40,6 +40,7 @@ class Client {
                 this.dClient.user.avatar
             );
         });
+        this.isInVc = false;
     }
 
     /**
@@ -178,10 +179,14 @@ class Client {
             adapterCreator: guild.djs.voiceAdapterCreator,
         });
     
+        this.isInVc = true;
+
         try {
+            this.isInVc = true;
             await entersState(this.connection, VoiceConnectionStatus.Ready, 30e3);
             return this.connection;
         } catch (error) {
+            this.isInVc = false;
             this.connection.destroy();
             throw error;
         }
@@ -192,6 +197,7 @@ class Client {
      * @summary disconnect from channel
      */
     async disconnectFromChannel() {
+        this.isInVc = false;
         this.connection.disconnect();
     }
 

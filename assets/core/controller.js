@@ -251,7 +251,7 @@ class Controller {
                 // TODO: implement
                 return "Not implemented yet";
             }, [ArgType.none]),
-            "get_roles": new Command("get_roles", (id) => {
+            "get_roles": new Command("get_roles", id => {
                 var member = this.currentServer.djs.members.cache.find(m => m.id === id);
                 var roles = member._roles;
                 var rolesStr = [];
@@ -267,6 +267,9 @@ class Controller {
                 var entirety = rolesStr.join(" / ");
                 return entirety;
             }, [ArgType.number]),
+            "is_connected_in_vc": new Command("is_connected_in_vc", () => {
+                return this.client.isInVc;
+            }),
         };
 
         this.client.dClient.on("message", msg => {
