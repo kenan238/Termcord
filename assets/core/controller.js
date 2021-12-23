@@ -270,7 +270,7 @@ class Controller {
             "is_connected_in_vc": new Command("is_connected_in_vc", () => {
                 return this.client.isInVc;
             }),
-            "get_invite": new Command("get_invite", () => {
+            "make_invite": new Command("get_invite", () => {
                 // make an invite
                 var invite = this.currentServer.djs.channels.cache.find(c => c.id === this.currentChannel.id).createInvite({maxAge: 0, maxUses: 0});
                 invite.then(i => {
