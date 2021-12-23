@@ -77,11 +77,11 @@ class App {
                 var members = [...this.controller.currentChannel.members.values()];
                 for(let i = 0; i < members.length; i++) { 
                     var member = members[i];
-                    var muted = member.voice.selfMute ? "{red-fg}Muted{/red-fg}" : "{gray-fg}Unmuted{/gray-fg}";
-                    var deafen = member.voice.selfDeaf ? "{magenta-fg}Deafen{/magenta-fg}" : "{gray-fg}Undeafen{/gray-fg}";
+                    var muted = member.voice.selfMute ? "{red-fg}Muted{/red-fg}" : "{inverse}Unmuted{/inverse}";
+                    var deafen = member.voice.selfDeaf ? "{magenta-fg}Deafen{/magenta-fg}" : "{inverse}Undeafen{/inverse}";
                     
-                    var Smuted = member.voice.serverMute ? "{red-fg}Server Muted{/red-fg}" : "{gray-fg}Not Server Muted{/gray-fg}";
-                    var Sdeafen = member.voice.serverDeaf ? "{magenta-fg}Server Deafen{/magenta-fg}" : "{gray-fg}Not Server Deafen{/gray-fg}";
+                    var Smuted = member.voice.serverMute ? "{red-fg}Server Muted{/red-fg}" : "{inverse}Not Server Muted{/inverse}";
+                    var Sdeafen = member.voice.serverDeaf ? "{magenta-fg}Server Deafen{/magenta-fg}" : "{inverse}Not Server Deafen{/inverse}";
                     this.controller.addMessage(new UserMessage(`@${member.user.username}#${member.user.discriminator}`, `${muted} | ${deafen} || ${Smuted} | ${Sdeafen}`));
                 }
             }
@@ -213,7 +213,7 @@ class App {
         else if(status == "dnd")
             statusStr = `{red-fg}DND{/red-fg}`;
         else
-        statusStr = `{gray-fg}OFFLINE{/gray-fg}`;
+        statusStr = `{inverse}OFFLINE{/inverse}`;
 
 
         var name = `{blue-fg}@{/blue-fg}{bold}${name}{/bold}#{yellow-fg}${discriminator}{/yellow-fg} ${statusStr}`;

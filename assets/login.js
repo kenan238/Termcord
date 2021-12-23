@@ -5,7 +5,7 @@ var screen = blessed.screen({
   smartCSR: true
 });
 
-module.exports.show = function (callback) {
+module.exports.show = function () {
 	screen.title = "Termcord - Login.";
 
 	// make a box in blessed
@@ -59,10 +59,6 @@ module.exports.show = function (callback) {
 	input.on("submit", function (value) {
 		console.log("Loading...");
 		tokenMgr.changeToken(value);
-		setInterval(() => {
-			screen.destroy()
-			callback();
-		}, 1000);
 	});
 
 	screen.append(box);

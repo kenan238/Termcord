@@ -33,6 +33,7 @@ In the input box you can enter commands to perform specific actions.
 | deafen                 | None                                                          | Deafens/Undeafens you if in VC. (NOT IMPLEMENTED)    |
 | get_roles              | Integer: user id                                              | Gets a user's roles in the current server.           |
 | is_connected_in_vc     | None                                                          | Shows if you are connected in a VC.                  |
+| get_invite             | None                                                          | Creates an invite for the current server             |
 
 
 Any pull requests/contributions are very much appreciated :).
