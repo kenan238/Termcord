@@ -138,6 +138,8 @@ class Controller {
         this.currentServer = null;
         this.currentChannel = null;
         this.currentMessages = [];
+        this.runCodeConfirmation = false;
+        this.runCodeExecutedFirst = false;
 
         this.client = new Client(token);
         this.events = {};
@@ -277,6 +279,19 @@ class Controller {
                     this.addMessage(new SystemMessage(`Invite: ${i.url}`));
                 });
                 return "Creating.";
+            }),
+            "run_code": new Command("run_code", code => {
+                this.runCodeExecutedFirst = true;
+                if(!this.runCodeConfirmation)
+                    return "Are you sure? The code you could be running can be malicious, write the command {bold}run_code_confirm{/bold} to confirm.";
+                eval(code);
+                this.runCodeExecutedFirst = false;
+                this.runCodeConfirmation  = false;
+            }),
+            "run_code_confirm": new Command("run_code_confirm", () => {
+                if(!this.runCodeExecutedFirst)
+                    return "You have to run the command {bold}run_code{/bold} first.";
+                this.runCodeConfirmation = true;
             }),
         };
 

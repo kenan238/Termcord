@@ -34,6 +34,8 @@ In the input box you can enter commands to perform specific actions.
 | get_roles              | Integer: user id                                              | Gets a user's roles in the current server.           |
 | is_connected_in_vc     | None                                                          | Shows if you are connected in a VC.                  |
 | make_invite            | None                                                          | Creates an invite for the current server             |
+| run_code               | String: Code                                                  | Runs code (Confirmation needed)                      |
+| run_code_confirmation  | None                                                          | Confirm running code                                 |
 
 
 Any pull requests/contributions are very much appreciated :).
