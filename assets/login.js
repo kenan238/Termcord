@@ -1,11 +1,11 @@
 /* Login */
-const tokenMgr = require("./tokenmgr.js");
+const { changeToken } = require("./tokenmgr.js");
 const blessed = require("reblessed");
 var screen = blessed.screen({
   smartCSR: true
 });
 
-module.exports.show = function () {
+var show = function (callback) {
 	screen.title = "Termcord - Login.";
 
 	// make a box in blessed
@@ -56,13 +56,16 @@ module.exports.show = function () {
 	});
 
 	// print something when the input box is submitted (enter key)
-	input.on("submit", function (value) {
+	input.on("submit", value => {
 		console.log("Loading...");
-		tokenMgr.changeToken(value);
+		changeToken(value);
+		callback(value);
 	});
 
 	screen.append(box);
 	input.focus();
 
 	screen.render();
-}
+};
+
+module.exports = { show };

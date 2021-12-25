@@ -1,17 +1,22 @@
 /* Client */
-const { SelfUser, BotUser, UserUser, djsUserToUserClass } = require("./resources/users.js");
-const guilds = require("./resources/guild.js");
-const discord = require("discord.js");
-const { Intents } = require("discord.js");
+const { 
+    SelfUser, 
+    BotUser, 
+    UserUser, 
+    djsUserToUserClass 
+} = require("./resources/users.js");
 const {
 	joinVoiceChannel,
 	createAudioPlayer,
 	createAudioResource,
 	entersState,
 	StreamType,
-	AudioPlayerStatus,
 	VoiceConnectionStatus,
+	AudioPlayerStatus,
 } = require("@discordjs/voice");
+const discord = require("discord.js");
+const { Intents } = discord;
+const guilds = require("./resources/guild.js");
 
 /**
  * @argument {token} token
