@@ -2,6 +2,7 @@
 const { Events, Controller, UserMessage, ArgTypeNames, SystemMessage } = require("./controller.js");
 const { Logger, LogTypes } = require("./logger.js");
 const blessed = require("reblessed");
+const crash = require("./assets/crash.js");
 
 const logger = new Logger('./app.log');
 

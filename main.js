@@ -2,8 +2,8 @@
 const tokenMgr = require("./assets/tokenmgr.js");
 const login = require("./assets/login.js");
 const { App } = require("./assets/core/app.js");
-const { ErrLevel, ErrApp } = require("./assets/error.js");
 const { Client, Intents } = require("discord.js");
+const crash = require("./assets/crash.js");
 
 
 var application = null;
@@ -33,11 +33,13 @@ function checkTokenValidity(token) {
 function startApp(token) {
 	console.log("Launching...");
 	console.log("Checking token validity...");
-	var tokenValid = checkTokenValidity(token);
+	var tokenValid;
+	if (!token)
+		token = tokenMgr.getToken();
+	tokenValid = checkTokenValidity(token);
 	if (tokenValid)
 		application = new App(token);
 	else {
-		var err = new ErrApp(`Invalid token.`, ErrLevel.critical);
-		err.show();
+		crash.critical("Invalid token.");
 	}
 }

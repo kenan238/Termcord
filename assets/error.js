@@ -1,9 +1,9 @@
 const blessed = require("reblessed");
 
 const ErrLevels  = {
-    "normal": 0,  // Just display error with option to restart
-    "high": 1,    // Error in bold and red
-    "critical": 3 // Display stack trace 
+    normal: 0,  // Just display error with option to restart
+    high: 1,    // Error in bold and red
+    critical: 3 // Display stack trace 
 };
 
 class ErrApp {

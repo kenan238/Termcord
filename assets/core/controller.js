@@ -293,6 +293,9 @@ class Controller {
                     return "You have to run the command {bold}run_code{/bold} first.";
                 this.runCodeConfirmation = true;
             }),
+            "debug_raise_exception": new Command("debug_raise_exception", e => {
+                throw new Error(e);
+            }),
         };
 
         this.client.dClient.on("message", msg => {
